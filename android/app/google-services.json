@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "39402262874",
+    "project_id": "bookonline-1be93",
+    "storage_bucket": "bookonline-1be93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39402262874:android:5cbf4926b671e1401d2363",
+        "android_client_info": {
+          "package_name": "com.example.last"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAus_Q4T7eEz82domPyO86omWSIDkJeeWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
