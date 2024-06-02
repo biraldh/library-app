@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:last/sdf.dart';
-import 'package:last/test.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:last/provider/userprovider.dart';
+import 'package:last/view/homepage.dart';
+import 'package:provider/provider.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: FirebaseOptions(
+      options: const FirebaseOptions(
         apiKey: 'AIzaSyAus_Q4T7eEz82domPyO86omWSIDkJeeWQ',
         appId: '1:39402262874:android:5cbf4926b671e1401d2363',
         messagingSenderId: '1:39402262874:android:5cbf4926b671e1401d2363',
@@ -24,8 +25,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: home()
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => Userprovider()), // Add your Userprovider here
+        ],
+      child: MaterialApp(home:RegisterPage())
     );
   }
 }
