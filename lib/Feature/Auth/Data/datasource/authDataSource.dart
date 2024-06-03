@@ -13,7 +13,10 @@ abstract interface class AuthDataSource{
   });
 }
 class AuthdatasourceImpelentation implements AuthDataSource{
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth;
+
+  AuthdatasourceImpelentation(this._auth);
+
   @override
   Future<String> signInwithEmailandPassword({
     required String email,
@@ -31,10 +34,10 @@ class AuthdatasourceImpelentation implements AuthDataSource{
   })
   async{
     try{
-      UserCredential usercredential = _auth.createUserWithEmailAndPassword(
-          email: email,
-          password: password,
-      ) as UserCredential;
+      UserCredential usercredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       if(usercredential.user == null){
         throw ServerException('User in null');
       }

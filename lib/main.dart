@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:last/Feature/Auth/Data/Repository/Auth_Repo_implemntation.dart';
+import 'package:last/Feature/Auth/Data/datasource/authDataSource.dart';
+import 'package:last/Feature/Auth/Domain/UseCase/user_sign_up.dart';
 import 'package:last/Feature/Auth/Presentation/Pages/Login_page.dart';
+import 'package:last/Feature/Auth/Presentation/bloc/auth_bloc.dart';
 import 'package:last/core/theme/theme.dart';
 
 
-import 'Feature/Auth/Presentation/Pages/Sign_up_page.dart';
 
 
 void main() async {
@@ -18,7 +23,23 @@ void main() async {
         storageBucket: 'bookonline-1be93.appspot.com',
       )
   );
-  runApp(MyApp());
+
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (_) =>
+        AuthBloc(
+          userSignUp: UserSignUp(
+            AuthRepoImplemntation(
+                AuthdatasourceImpelentation(
+                    FirebaseAuth.instance
+                )
+            )
+          )
+        )
+      )
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
