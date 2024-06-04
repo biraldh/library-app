@@ -22,8 +22,6 @@ class _SignUpPageState extends State<SignUpPage> {
   final namecontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   final formkey = GlobalKey<FormState>();
-
-  @override
   void dispose() {
     emailcontroller.dispose();
     passwordcontroller.dispose();
